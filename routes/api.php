@@ -18,5 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('APIs')->group(function () {
-
+        Route::group(['middleware' => ['guest:api']], function () {
+            Route::post('login', 'AuthController@login');
+            Route::post('signup', 'AuthController@signup');
+        });
+        Route::group(['middleware' => 'auth:api'], function() {
+            Route::get('logout', 'AuthController@logout');
+            Route::get('getuser', 'AuthController@getUser');
+        });
 });
