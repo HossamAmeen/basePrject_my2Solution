@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Artisan;
 class APICommand extends Command
 {
    /**
@@ -39,5 +39,6 @@ class APICommand extends Command
     {
         Artisan::call('make:controller '.$this->argument('api').'Controller' );
         Artisan::call('make:model '.$this->argument('api').' -m' );
+        
     }
 }
